@@ -113,7 +113,7 @@ func Encode(filepath, msg string) {
 	for i := 0; i < msgLen; i++ {
 		next := getNextInOrder(order, pixelCount, visited)
 		row, col := getRowCol(next, width, height)
-		encodeImgAt(clone, row, col, msg[i], uniq + uint8(i))
+		encodeImgAt(clone, row, col, msg[i], uniq ^ uint8(i))
 	}
 
 	out, err := os.OpenFile("out.png", os.O_WRONLY|os.O_CREATE, 0600)
